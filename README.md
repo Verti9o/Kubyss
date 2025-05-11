@@ -1,7 +1,9 @@
 # Kubyss
-A set of playbooks to work with a Kubernetes cluster.
+A set of playbooks to work with a Kubernetes cluster. As well as a way to learn Ansible for me.
 
-As well as a way to learn Ansible for me.
+## Requirements
+- RedHat-based machines.
+- Host names in inventory has suffixes as in the example below.
 
 ## Inventory Example
 ```yaml
