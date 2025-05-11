@@ -5,7 +5,7 @@ As well as a way to learn Ansible for me.
 
 ## Inventory Example
 ```yaml
-k8s:
+test_k8s:
   hosts:
     k8s-ctrl001
     k8s-ctrl002

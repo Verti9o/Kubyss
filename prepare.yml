@@ -1,5 +1,24 @@
+- name: Machine preparation - common
+  hosts: test_k8s
+  become: true
+  tasks:
+    - name: Print MAC-addresses (should be unique)
+      ansible.builtin.debug:
+        msg: "{{ ansible_facts.default_ipv4.macaddress }}"
+
+    - name: Gather product_uuid
+      become: true
+      ansible.builtin.shell: sudo cat /sys/class/dmi/id/product_uuid
+      register: cmd_product_uuid
+      changed_when: false
+
+    - name: Print product_uuid (should be unique)
+      ansible.builtin.debug:
+        msg: "{{ cmd_product_uuid.stdout }}"
+
 ---
-- name: Prepare a primary control plane for Kubernetes installation
-  hosts: k8s, &*ctrl*, &*01
+- name: Machine preparation - primary control plane
+  hosts: test_k8s, &*ctrl*, &*01
+  become: true
   roles:
     - helm_install
