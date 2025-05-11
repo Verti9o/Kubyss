@@ -1,0 +1,5 @@
+---
+- name: Prepare a primary control plane for Kubernetes installation
+  hosts: k8s, &*ctrl*, &*01
+  roles:
+    - helm_install
