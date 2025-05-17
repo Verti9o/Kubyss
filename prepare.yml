@@ -1,4 +1,5 @@
-- name: Machine preparation - common
+---
+- name: Machine preparation - common 1
   hosts: test_k8s
   become: true
   tasks:
@@ -15,6 +16,13 @@
     - name: Print product_uuid (should be unique)
       ansible.builtin.debug:
         msg: "{{ cmd_product_uuid.stdout }}"
+
+---
+- name: Machine preparation - common 2
+  hosts: test_k8s
+  roles:
+    - selinux_set_permissive
+    - swap_remove
 
 ---
 - name: Machine preparation - primary control plane
