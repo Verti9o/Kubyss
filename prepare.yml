@@ -23,6 +23,8 @@
   roles:
     - selinux_set_permissive
     - swap_remove
+    - containerd_install
+    - helm_install
 
 ---
 - name: Machine preparation - primary control plane

@@ -1,0 +1,14 @@
+---
+- name: Add Docker CE repo
+  ansible.builtin.yum_repository:
+    name: docker-ce-stable
+    description: Docker CE Stable - $basearch
+    baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
+    enabled: 1
+    gpgcheck: 1
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+- name: Install containerd, git, jq, pip
+  ansible.builtin.dnf:
+    name:
+      - containerd.io
